@@ -1,0 +1,93 @@
+﻿<html>
+<head>
+    <style>
+        body{
+            background-color: bisque;
+        }
+        button{
+            margin-top: 50px;
+            width: 100px;
+            height: 100px;
+        }
+        #texBox1{
+            width: 300px;
+            height: 200px;
+        }
+        .listul{
+            margin-top: 0;
+            font-size: 12px;
+            position: absolute;
+            text-align: left;
+
+
+        }
+        .listul li{
+            background-color: white;
+            list-style-type: none;
+            width: 90px;
+            height: 12px;
+            cursor: pointer;
+        }
+        #ComboBox1{
+            background-color: beige;
+            margin-top: 5px;
+            width: 100px;
+            height: 12px;
+            display: inline-block;
+            border: 1px solid black;
+        }
+        .listString{
+            font-size: 10px;
+            display: inline-block;
+        }
+        .Skroling{
+            display: inline-block;
+            font-size: 10px;
+            border-left: 1px solid black;
+            float:right;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+
+    <script type="text/javascript" src="combishe.js" ></script>
+    <script type="text/javascript">
+        function GetData(){
+            var text=document.getElementById('texBox1');
+            var array=[];var array2=[];
+            var j=0;
+            if(text.value!=null){
+                array=text.value.split(' ');
+                for(var i=0;i<array.length;i++){
+                    if(array[i]){
+                        array2[j]=array[i];
+                        j++;
+                    }
+                }
+            }
+            return array2;
+        }
+        function MainCombobox()
+        {
+            var curren=document.getElementById('ComboBox1');
+            curren.innerHTML='';
+            var Data=GetData();
+            var Combobox=new MyCombobox({current:curren,value:Data[0],dataSource:Data});
+
+        }
+    </script>
+</head>
+        <body>
+        <div style=" text-align: center;">
+            <textarea id="texBox1"></textarea>
+            <div>
+                <div id="ComboBox1"></div>
+            </div>
+        </div>
+
+            <div>
+                <button onclick="MainCombobox();">Выполнить</button>
+            </div>
+        </body>
+
+</html>

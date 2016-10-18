@@ -19,10 +19,13 @@
         }
         .listul li{
             margin: 0 0 0 0;
-            background-color: aqua;
+            background-color: white;
             font-size: 20px;
             list-style-type: none;
             cursor: pointer;
+        }
+        .listul li:hover{
+            background-color:bisque;
         }
         #ComboBox1{
             background-color: beige;
@@ -51,7 +54,7 @@
     <script type="text/javascript" src="combishe.js" ></script>
     <script type="text/javascript">
         function GetData(){
-            var array=['text1','tex2','text3','tex1','tex2','text3','tex1','tex2','text3','tex1','tex2','text3','tex1','tex2','text3'];
+            var array=['text1','tex2','text3'];
             return array;
         }
       window.onload=  function MainCombobox()

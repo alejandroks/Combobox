@@ -1,4 +1,6 @@
 function MyCombobox(object){
+    
+var bool=true;
 
     var wrapper=document.createElement('div');
     wrapper.className="ComboBox1";
@@ -13,8 +15,10 @@ function MyCombobox(object){
 
     var divOverFlow=document.createElement('div');
     divOverFlow.className='divOwer';
+    divOverFlow.style.display='none';
     buttonSkroll.onclick=function onClikButton(object1)
     {
+        if(bool){
         var listUL=document.createElement('ul');
         listUL.className="listul";
 
@@ -25,15 +29,15 @@ function MyCombobox(object){
             listUL.appendChild(list[i]);
         }
         divOverFlow.appendChild(listUL)
-        object.current.appendChild(divOverFlow);
-
+        object.current.appendChild(divOverFlow); 
+        bool=false;
+        }
+        divOverFlow.style.display=='none'? divOverFlow.style.display='block':divOverFlow.style.display='none';
     }
+    
     wrapper.appendChild(listString);
     wrapper.appendChild(buttonSkroll);
     object.current.appendChild(wrapper);
-
-
-
 
 
 }

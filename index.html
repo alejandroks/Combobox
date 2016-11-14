@@ -1,0 +1,85 @@
+﻿<html>
+
+<head>
+    <style>
+        body {
+            background-color: bisque;
+        }
+        
+        .divOwer {
+            background-color: red;
+            max-height: 200px;
+            overflow-y: auto;
+            border: none;
+            margin-top: 2px;
+        }
+        
+        ul {
+            margin: 0 0 0 -40px;
+            text-align: center;
+            background-color: black;
+        }
+        
+        .listul li {
+            margin: 0 0 0 0;
+            background-color: white;
+            font-size: 20px;
+            list-style-type: none;
+            cursor: pointer;
+        }
+        
+        .listul li:hover {
+            background-color: bisque;
+        }
+        
+        #ComboBox1 {
+            background-color: beige;
+            border: 1px solid black;
+            width: 300px;
+            height: 30px;
+        }
+        
+        .listString {
+            font-size: 24px;
+            display: inline-block;
+        }
+        
+        .Skroling {
+            display: inline-block;
+            font-size: 20px;
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+            float: right;
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+
+    <script type="text/javascript" src="combishe.js"></script>
+    <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+    <script type="text/javascript">
+        function GetData() {
+            var array = ['text1', 'tex2', 'text3'];
+            return array;
+        }
+        window.onload = function MainCombobox() {
+            var curren = $('#ComboBox1');
+            curren.html('');
+            var Data = GetData();
+            var Combobox = new MyCombobox({
+                current: curren,
+                value: Data[0],
+                dataSource: Data
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="ComboBox1"></div>
+</body>
+
+</html>

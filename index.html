@@ -5,7 +5,10 @@
         body {
             background-color: bisque;
         }
-        
+        #wrapper-combo{
+            width: 100%;
+            position: relative;
+        }
         .divOwer {
             background-color: red;
             max-height: 200px;
@@ -33,6 +36,16 @@
         }
         
         #ComboBox1 {
+            float: left;
+            background-color: beige;
+            border: 1px solid black;
+            width: 300px;
+            height: 30px;
+        }
+        
+        #ComboBox2 {
+            float: left;
+            margin-left: 40px;
             background-color: beige;
             border: 1px solid black;
             width: 300px;
@@ -64,22 +77,54 @@
             var array = ['text1', 'tex2', 'text3'];
             return array;
         }
-        window.onload = function MainCombobox() {
+
+     function addLoadEvent(func) { 
+     var oldonload = window.onload; 
+     if (typeof window.onload != 'function'){
+          window.onload = func;
+        }
+     else {
+          window.onload = function() { 
+              if (oldonload) { 
+                  oldonload();
+               }
+                func();
+             }
+            }
+         }
+        addLoadEvent(function MainCombobox() {
             var curren = $('#ComboBox1');
             curren.html('');
             var Data = GetData();
             var Combobox = new MyCombobox({
                 current: curren,
-                value: Data[0],
-                dataSource: Data
+                value: "Combo1",
+                dataSource: Data,
+                itemTemplate: function(objectData) {
+                    return '<b>' + objectData + '</b>';
+                }
             });
-
-        }
+        });
+       addLoadEvent(function Combobox2() {
+            var curren2 = $('#ComboBox2');
+            curren2.html('');
+            var ComboBox2 = new MyCombobox({
+                current: curren2,
+                dataSource: GetData(),
+                value: 'Combo2',
+                itemTemplate: function(objectData) {
+                    return '<b>' + objectData + '</b>';
+                }
+            });
+        });
     </script>
 </head>
 
 <body>
-    <div id="ComboBox1"></div>
+    <div id="wrapper-combo">
+        <div id="ComboBox1"></div>
+        <div id="ComboBox2"></div>
+    </div>
 </body>
 
 </html>

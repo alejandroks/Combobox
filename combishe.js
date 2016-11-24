@@ -4,7 +4,7 @@ function MyCombobox(object) {
 
     var dataSorceLoad = true;
 
-    var wrapper = $("<div class='ComboBox1'></div>");
+    var wrapper = $("<div></div>");
 
     var listString = $("<div class='listString'></div>").html(object.value);
 
@@ -12,14 +12,14 @@ function MyCombobox(object) {
 
     var divOverFlow = $("<div class='divOwer'></div>").hide();
 
-    buttonSkroll.click(function onClikButton(object1) {
+    buttonSkroll.click(function onClikButton() {
         if (dataSorceLoad) {
             var listUL = $('<ul></ul>');
             listUL.addClass('listul');
             var list = [];
             for (var i = 0; i < object.dataSource.length; i++) {
                 list[i] = $("<li></li>");
-                list[i].html(object.dataSource[i]);
+                list[i].html(object.itemTemplate(object.dataSource[i]));
                 listUL.append(list[i]);
             }
             divOverFlow.append(listUL)
